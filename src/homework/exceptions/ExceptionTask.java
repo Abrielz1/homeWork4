@@ -6,20 +6,18 @@ public class ExceptionTask {
 
     public static Optional<String> mergeStrings(String first, String second) {
 
-        if (Optional.ofNullable(first).isEmpty() && Optional.ofNullable(second).isEmpty()) {
-
-            return Optional.empty();
-        }
-
-        if (((first != null && first.isBlank()) && second.isBlank())) {
-
-            return Optional.empty();
-        }
 
         first = Optional.ofNullable(first).orElse("");
         second = Optional.ofNullable(second).orElse("");
 
-        return Optional.of(first.length() > second.length() ? first + second : second + first);
+        if (first.isEmpty() &&second.isEmpty()) {
+
+            return Optional.empty();
+        }
+
+        else {
+            return Optional.of(first.length() > second.length() ? first + second : second + first);
+        }
     }
 
     public static long getPower(int n, int p) {
