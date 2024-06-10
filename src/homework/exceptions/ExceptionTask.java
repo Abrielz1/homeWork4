@@ -6,20 +6,23 @@ public class ExceptionTask {
 
     public static Optional<String> mergeStrings(String first, String second) {
 
-        if (first== null && second == null) {
+        if (Optional.ofNullable(first).isEmpty() && Optional.ofNullable(second).isEmpty()) {
+
             return Optional.empty();
         }
 
-        if (((first!= null && first.isBlank())&& second.isBlank())) { //
+        if (((first != null && first.isBlank()) && second.isBlank())) {
+
             return Optional.empty();
         }
 
         first = Optional.ofNullable(first).orElse("");
         second = Optional.ofNullable(second).orElse("");
-        return Optional.of( first.length() > second.length() ?first + second : second + first);
+
+        return Optional.of(first.length() > second.length() ? first + second : second + first);
     }
 
-    public static long getPower(int n, int p) throws Exception {
+    public static long getPower(int n, int p) {
         if (n <= 0 || p <= 0) {
 
             return -1L;
@@ -28,7 +31,7 @@ public class ExceptionTask {
         return (long) (Math.pow(n, p));
     }
 
-    public static void exceptionProcessing() throws Exception {
+    public static void exceptionProcessing() {
         try {
             throwCheckedException();
             throwUncheckedException();
@@ -38,7 +41,7 @@ public class ExceptionTask {
     }
 
 
-    public static void customException(int a) throws InstantiationException {
+    public static void customException(int a) {
         if (a == 0) {
             throw new InvalidZeroParameterException();
         }
